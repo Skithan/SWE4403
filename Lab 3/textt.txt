@@ -1,0 +1,93 @@
+/*Thread t1 = new Thread(new RunnableProcess("withdraw", "Bankaccount1"));
+        Thread t2 = new Thread(new RunnableProcess("deposit", "Bankaccount2"));
+
+        t1.start();
+        t2.start(); */
+
+
+
+
+/*public class Logger {
+
+
+   String fileName; 
+//Lazy Instantiation 
+ private static Logger logInstance = null;
+
+ //constructor
+ private Logger(String fileName){
+   
+   this.fileName = fileName;
+}
+
+ public static Logger getInstance(){
+
+    if(logInstance == null)
+    {
+        logInstance = new Logger(); 
+    }
+
+    return logInstance; 
+ }
+
+ public void write(String message) {
+ 
+    System.out.println("Writing this " + message + "to the " + filename);
+ }
+
+} */
+
+
+/*
+import java.util.Random;
+public class RunnableProcess implements Runnable {
+    private String name, messageType;
+    private int time;
+    private Random rand = new Random();
+
+    public RunnableProcess(String name, String messageType) {
+        this.name = name;
+        this.messageType = messageType; 
+        this.time = rand.nextInt(999);
+    }
+
+    public void run() {
+        try {
+
+            Logger log = Logger.getInstance(); 
+            
+            System.out.printf("%s is sleeping for %d \n", this.name, this.time);
+            Thread.sleep(this.time);
+            System.out.printf("%s is done \n", this.name);
+
+            log.write(messageType);
+
+            
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    
+    */
+
+
+public class Demo {
+    public static void main(String[] args) {
+
+        Logger log1 = new Logger("myFile"); 
+        Logger log2 = new Logger("myFile"); 
+
+        //Both loggers can write to the same log file
+
+        log1.write("Writing to myFile");
+        log2.write("Also writing to myFile");
+
+
+        //This is an example of multiple loggers writing to different log files
+        Logger log3 = new Logger("mySecondFile"); 
+
+        log3.write("Writing to mySecondFile");
+
+    }
+}
